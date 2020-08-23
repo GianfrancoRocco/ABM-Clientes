@@ -37,10 +37,11 @@ if($_POST){
   } else {
 
     if($_FILES["archivo"]["error"] === UPLOAD_ERR_OK){
+      $nombreAleatorio = date("Ymdhmsi");
       $archivoTmp = $_FILES["archivo"]["tmp_name"];
       $nombreArchivo = $_FILES["archivo"]["name"];
       $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
-      $nombreImagen = "$nombreArchivo.$extension";
+      $nombreImagen = "$nombreAleatorio.$extension";
       move_uploaded_file($archivoTmp, "files/$nombreImagen");
     }
 
